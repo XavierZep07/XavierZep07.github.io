@@ -2,95 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web</title>
+    <title>Organizador de Tareas para Estudiantes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #0077cc;
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-        }
-        nav {
-            background: #005fa3;
-            padding: 0.8rem;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 2rem;
-            text-align: center;
-        }
-        section {
-            margin: 2rem auto;
-            max-width: 800px;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-        }
-        footer {
-            text-align: center;
-            background: #0077cc;
-            color: white;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
+        body { font-family: Arial; padding: 20px; background: #f2f2f2; }
+        header { background: #6c63ff; color: white; padding: 25px; border-radius: 10px;}
+        section { background: white; padding: 20px; margin-top: 20px; border-radius: 10px; }
+        h2 { color: #6c63ff; }
+        textarea, input { width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc; }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Bienvenido a Mi Página</h1>
-        <p>Un sitio sencillo creado con GitHub Pages</p>
-    </header>
 
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Acerca de</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
-    </nav>
+<header>
+    <h1>Organizador de Tareas y Fechas Importantes</h1>
+    <p>Prototipo diseñado con la metodología Design Thinking.</p>
+</header>
 
-    <main>
-        <section>
-            <h2>Acerca de</h2>
-            <p>
-                Esta página es un prototipo diseñado con HTML y CSS como parte de un proyecto de 
-                <strong>Design Thinking</strong>.
-            </p>
-        </section>
+<section>
+    <h2>📌 Lista de tareas</h2>
+    <p>Escribe tus tareas aquí:</p>
+    <textarea rows="6" placeholder="Ejemplo: Matemáticas - Ejercicio 5, entregar jueves"></textarea>
+</section>
 
-        <section>
-            <h2>Servicios</h2>
-            <p>
-                Aquí puedes describir lo que tu página o proyecto ofrece.
-            </p>
-        </section>
+<section>
+    <h2>🗓️ Próximas fechas importantes</h2>
+    <textarea rows="5" placeholder="Ejemplo: Examen de Historia - 12 de noviembre"></textarea>
+</section>
 
-        <section>
-            <h2>Contacto</h2>
-            <p>
-                Escríbenos a: <a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a>
-            </p>
-        </section>
-    </main>
+<section>
+    <h2>📝 Notas rápidas</h2>
+    <textarea rows="5" placeholder="Anota recordatorios, ideas o pendientes aquí..."></textarea>
+</section>
 
-    <footer>
-        <p>© 2025 Mi Proyecto - Todos los derechos reservados</p>
-    </footer>
+<section>
+    <h2>ℹ️ Acerca de este proyecto</h2>
+    <p>Prototipo creado como parte de un ejercicio académico siguiendo Design Thinking.</p>
+</section>
+
 </body>
 </html>
