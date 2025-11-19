@@ -2,13 +2,97 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Organizador de Tareas para Estudiantes</title>
+    <title>Organizador de Tareas | Prototipo</title>
+
     <style>
-        body { font-family: Arial; padding: 20px; background: #f2f2f2; }
-        header { background: #6c63ff; color: white; padding: 25px; border-radius: 10px;}
-        section { background: white; padding: 20px; margin-top: 20px; border-radius: 10px; }
-        h2 { color: #6c63ff; }
-        textarea, input { width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f9;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: #4c5fe2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            background: #343a40;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- SECTION PANELS --- */
+        .container {
+            width: 90%;
+            margin: auto;
+            margin-top: 25px;
+        }
+
+        .panel {
+            background: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4c5fe2;
+            margin-top: 0;
+        }
+
+        textarea, input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
+        .calendar-box {
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            background: #f8f8ff;
+        }
+
+        .task-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .task-list li {
+            background: #e8ecff;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            color: #555;
+        }
     </style>
 </head>
 
@@ -16,29 +100,94 @@
 
 <header>
     <h1>Organizador de Tareas y Fechas Importantes</h1>
-    <p>Prototipo diseñado con la metodología Design Thinking.</p>
+    <p>Prototipo elaborado con Design Thinking</p>
 </header>
 
-<section>
-    <h2>📌 Lista de tareas</h2>
-    <p>Escribe tus tareas aquí:</p>
-    <textarea rows="6" placeholder="Ejemplo: Matemáticas - Ejercicio 5, entregar jueves"></textarea>
-</section>
+<nav>
+    <a href="#tareas">Tareas</a>
+    <a href="#calendario">Calendario</a>
+    <a href="#recordatorios">Recordatorios</a>
+    <a href="#notas">Notas</a>
+    <a href="#info">Acerca de</a>
+</nav>
 
-<section>
-    <h2>🗓️ Próximas fechas importantes</h2>
-    <textarea rows="5" placeholder="Ejemplo: Examen de Historia - 12 de noviembre"></textarea>
-</section>
+<div class="container">
 
-<section>
-    <h2>📝 Notas rápidas</h2>
-    <textarea rows="5" placeholder="Anota recordatorios, ideas o pendientes aquí..."></textarea>
-</section>
+    <!-- SECCIÓN TAREAS -->
+    <section id="tareas" class="panel">
+        <h2>📌 Lista de tareas</h2>
+        <p>Escribe tareas por materia o proyecto.</p>
 
-<section>
-    <h2>ℹ️ Acerca de este proyecto</h2>
-    <p>Prototipo creado como parte de un ejercicio académico siguiendo Design Thinking.</p>
-</section>
+        <ul class="task-list">
+            <li>Matemáticas - Ejercicio 10 (ejemplo)</li>
+            <li>Biología - Reporte de laboratorio (ejemplo)</li>
+        </ul>
+
+        <textarea rows="4" placeholder="Agregar nueva tarea aquí..."></textarea>
+    </section>
+
+    <!-- SECCIÓN CALENDARIO -->
+    <section id="calendario" class="panel">
+        <h2>🗓️ Calendario</h2>
+        <p>Vista general del mes (solo prototipo visual).</p>
+
+        <div class="calendar-box">
+            <h3>Calendario del Mes</h3>
+            <p>[Aquí iría un calendario interactivo en la versión final]</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN RECORDATORIOS -->
+    <section id="recordatorios" class="panel">
+        <h2>⏰ Recordatorios</h2>
+        <p>Configura actividades importantes.</p>
+
+        <label>Escribe un recordatorio:</label>
+        <textarea rows="3" placeholder="Ejemplo: Estudiar para examen de matemáticas..."></textarea>
+
+        <label>Fecha tentativa:</label>
+        <input type="date">
+
+        <label>Prioridad:</label>
+        <select>
+            <option>Alta</option>
+            <option>Media</option>
+            <option>Baja</option>
+        </select>
+    </section>
+
+    <!-- SECCIÓN NOTAS -->
+    <section id="notas" class="panel">
+        <h2>📝 Notas rápidas</h2>
+        <textarea rows="6" placeholder="Escribe ideas, pendientes o apuntes breves aquí..."></textarea>
+    </section>
+
+    <!-- SECCIÓN PRÓXIMAS ENTREGAS -->
+    <section class="panel">
+        <h2>📅 Próximas entregas</h2>
+        <p>Panel visual de fechas importantes.</p>
+
+        <ul class="task-list">
+            <li>Historia - Ensayo (entrega viernes)</li>
+            <li>Física - Proyecto final (entrega 15 de noviembre)</li>
+        </ul>
+    </section>
+
+    <!-- SECCIÓN ACERCA DE -->
+    <section id="info" class="panel">
+        <h2>ℹ️ Acerca de este prototipo</h2>
+        <p>
+            Esta plataforma es un prototipo no funcional diseñado como parte del proceso de 
+            Design Thinking para resolver el problema de organización de tareas en estudiantes.
+        </p>
+        <p>Incluye: tareas, calendario, recordatorios, notas y próximas entregas.</p>
+    </section>
+
+</div>
+
+<footer>
+    Prototipo académico | Design Thinking | 2025
+</footer>
 
 </body>
 </html>
