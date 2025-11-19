@@ -2,192 +2,174 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>MyTasks</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyFlow - Plataforma Estudiantil</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f4f9;
+        body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; }
+        .sidebar {
+            width: 230px; height: 100vh; background: #1e90ff; color: white; position: fixed;
+            padding-top: 20px;
+        }
+        .sidebar h2 { text-align: center; }
+        .sidebar a {
+            display: block; padding: 12px; color: white; text-decoration: none; margin: 6px 0;
+        }
+        .sidebar a:hover { background: #187bcd; }
+
+        .topbar {
+            margin-left: 230px; height: 60px; background: white; display: flex;
+            justify-content: flex-end; align-items: center; padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .profile-menu {
+            background: #1e90ff; color: white; padding: 10px 15px; border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile-dropdown {
+            display: none; position: absolute; top: 70px; right: 20px; background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2); border-radius: 5px; width: 180px;
+        }
+        .profile-dropdown a {
+            display: block; padding: 10px; text-decoration: none; color: #333;
+        }
+        .profile-dropdown a:hover { background: #f0f0f0; }
+
+        .content { margin-left: 230px; padding: 20px; }
+
+        .section-box {
+            background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
         }
 
-        /* --- HEADER --- */
-        header {
-            background: #4c5fe2;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        button {
+            background: #1e90ff; border: none; padding: 10px 15px; color: white;
+            border-radius: 5px; cursor: pointer;
         }
+        button:hover { background: #187bcd; }
 
-        /* --- NAVBAR --- */
-        nav {
-            background: #343a40;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- SECTION PANELS --- */
-        .container {
-            width: 90%;
-            margin: auto;
-            margin-top: 25px;
-        }
-
-        .panel {
-            background: white;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: #4c5fe2;
-            margin-top: 0;
-        }
-
-        textarea, input, select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-top: 10px;
-        }
-
-        .calendar-box {
-            border: 1px solid #ccc;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            background: #f8f8ff;
-        }
-
-        .task-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .task-list li {
-            background: #e8ecff;
-            margin: 8px 0;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-            color: #555;
-        }
     </style>
 </head>
-
 <body>
 
-<header>
-    <h1>MyTasks</h1>
-    <p>Organizador de Tareas y Fechas Importantes</p>
-</header>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>StudyFlow</h2>
+        <a href="#calendario">📅 Calendario</a>
+        <a href="#recordatorios">⏰ Recordatorios</a>
+        <a href="#tareas">📝 Lista de Tareas</a>
+        <a href="#notas">🗒️ Notas Rápidas</a>
+    </div>
 
-<nav>
-    <a href="#tareas">Tareas</a>
-    <a href="#calendario">Calendario</a>
-    <a href="#recordatorios">Recordatorios</a>
-    <a href="#notas">Notas</a>
-    <a href="#info">Acerca de</a>
-</nav>
+    <!-- TOPBAR PERFIL -->
+    <div class="topbar">
+        <div class="profile-menu" onclick="toggleProfile()">👤 Mi Perfil</div>
 
-<div class="container">
-
-    <!-- SECCIÓN TAREAS -->
-    <section id="tareas" class="panel">
-        <h2>📌 Lista de tareas</h2>
-        <p>Escribe tareas por materia o proyecto.</p>
-
-        <ul class="task-list">
-            <li>Algebra - Ejercicio #10</li>
-            <li>TSP - Entrega de SRS </li>
-        </ul>
-
-        <textarea rows="4" placeholder="Agregar nueva tarea aquí..."></textarea>
-    </section>
-
-    <!-- SECCIÓN CALENDARIO -->
-    <section id="calendario" class="panel">
-        <h2>🗓️ Calendario</h2>
-        <p>Vista general del mes.</p>
-
-        <div class="calendar-box">
-            <h3>Calendario del Mes</h3>
-            <p>Cargando...</p>
+        <div class="profile-dropdown" id="profileDropdown">
+            <a href="#">Ver Perfil</a>
+            <a href="#">Configuración</a>
+            <a href="#">Cerrar Sesión</a>
         </div>
-    </section>
+    </div>
 
-    <!-- SECCIÓN RECORDATORIOS -->
-    <section id="recordatorios" class="panel">
-        <h2>⏰ Recordatorios</h2>
-        <p>Configura actividades importantes.</p>
+    <!-- CONTENIDO -->
+    <div class="content">
 
-        <label>Escribe un recordatorio:</label>
-        <textarea rows="3" placeholder="Ejemplo: Estudiar para examen de matemáticas..."></textarea>
+        <!-- CALENDARIO -->
+        <div id="calendario" class="section-box">
+            <h2>Calendario</h2>
+            <p>Aquí podrás visualizar tus eventos y fechas importantes.</p>
+            <button onclick="confirmar('evento agregado al calendario')">Agregar Evento</button>
+        </div>
 
-        <label>Fecha de entrega:</label>
-        <input type="date">
+        <!-- RECORDATORIOS -->
+        <div id="recordatorios" class="section-box">
+            <h2>Recordatorios</h2>
+            <p>Estos son algunos recordatorios próximos:</p>
+            <ul>
+                <li>🔔 Entregar proyecto de programación — Mañana 8:00 AM</li>
+                <li>🔔 Reunión de equipo — 21/11/2025</li>
+                <li>🔔 Pago de inscripción — 30/11/2025</li>
+            </ul>
+            <br>
 
-        <label>Prioridad:</label>
-        <select>
-            <option>Alta</option>
-            <option>Media</option>
-            <option>Baja</option>
-        </select>
-    </section>
+            <h3>Añadir nuevo recordatorio</h3>
+            <label>Título del recordatorio:</label><br>
+            <input type="text" placeholder="Ej: Llevar documentos"><br><br>
 
-    <!-- SECCIÓN NOTAS -->
-    <section id="notas" class="panel">
-        <h2>📝 Notas rápidas</h2>
-        <textarea rows="6" placeholder="Escribe ideas, pendientes o apuntes breves aquí..."></textarea>
-    </section>
+            <label>Fecha:</label><br>
+            <input type="date"><br><br>
 
-    <!-- SECCIÓN PRÓXIMAS ENTREGAS -->
-    <section class="panel">
-        <h2>📅 Próximas entregas</h2>
-        <p>Panel visual de fechas importantes.</p>
+            <label>Hora:</label><br>
+            <input type="time"><br><br>
 
-        <ul class="task-list">
-            <li>Estrategias de Aprendizaje - Ensayo (entrega viernes)</li>
-            <li>Analisis y Diseño de Interfaces de Usuario - Proyecto final (entrega 28 de noviembre)</li>
-        </ul>
-    </section>
+            <label>Descripción:</label><br>
+            <textarea rows="3" cols="50" placeholder="Detalles del recordatorio"></textarea><br><br>
 
-    <!-- SECCIÓN ACERCA DE -->
-    <section id="info" class="panel">
-        <h2>ℹ️ Acerca de</h2>
-        <p>
-            Esta plataforma es un prototipo no funcional
-        </p>
-        <p>Francisco Xavier Zepeda Flores </p>
-        <p>Analisis y Diseño de Interfaces de Usuario</p>
-    </section>
+            <button onclick="confirmar('recordatorio agregado correctamente')">Confirmar Recordatorio</button>
+        </div>
 
-</div>
+        <!-- LISTA DE TAREAS -->
+        <div id="tareas" class="section-box">
+            <h2>Lista de Tareas</h2>
+            <p>Aquí puedes ver tus tareas actuales y añadir nuevas.</p>
 
-<footer>
-    MyTasks | Xavier Zepeda | 2025
-</footer>
+            <h3>Tareas existentes:</h3>
+            <ul>
+                <li>📘 Leer capítulo 5 de Matemáticas — <strong>Entrega: 20/11/2025</strong></li>
+                <li>🧪 Preparar informe de laboratorio — <strong>Entrega: 22/11/2025</strong></li>
+                <li>📚 Estudiar para examen de Historia — <strong>Entrega: 24/11/2025</strong></li>
+            </ul>
+            <br>
+
+            <h3>Añadir nueva tarea</h3>
+            <label>Nombre de la tarea:</label><br>
+            <input type="text" placeholder="Ej: Resolver ejercicios de física"><br><br>
+
+            <label>Materia:</label><br>
+            <input type="text" placeholder="Ej: Física II"><br><br>
+
+            <label>Fecha de entrega:</label><br>
+            <input type="date"><br><br>
+
+            <label>Descripción:</label><br>
+            <textarea rows="3" cols="50" placeholder="Detalles adicionales de la tarea"></textarea><br><br>
+
+            <button onclick="confirmar('tarea agregada con éxito')">Confirmar Tarea</button>
+        </div>
+
+        <!-- NOTAS RÁPIDAS -->
+        <div id="notas" class="section-box">
+            <h2>Notas Rápidas</h2>
+            <p>Ejemplos de notas guardadas:</p>
+            <ul>
+                <li>📝 "Comprar cartulina para la maqueta"</li>
+                <li>📝 "Pregunta 3 del ejercicio no se entiende, revisar con el profe"</li>
+                <li>📝 "Recordar subir evidencia a la plataforma"</li>
+            </ul>
+            <br>
+
+            <h3>Agregar nueva nota rápida</h3>
+            <label>Título:</label><br>
+            <input type="text" placeholder="Ej: Pendiente importante"><br><br>
+
+            <label>Contenido:</label><br>
+            <textarea rows="4" cols="50" placeholder="Escribe tu nota..."></textarea><br><br>
+
+            <button onclick="confirmar('nota rápida guardada')">Confirmar Nota</button>
+        </div>
+
+    </div>
+
+    <script>
+        function confirmar(msg) {
+            alert("✓ Acción confirmada: " + msg);
+        }
+
+        function toggleProfile() {
+            var menu = document.getElementById("profileDropdown");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
 
 </body>
 </html>
