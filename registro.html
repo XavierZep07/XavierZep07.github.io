@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - StudyFlow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #1e90ff;
+        }
+        .register-box {
+            background: white;
+            width: 380px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 95%;
+            padding: 10px;
+            background: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #187bcd;
+        }
+        a { text-decoration: none; color: #1e90ff; }
+    </style>
+</head>
+<body>
+
+    <div class="register-box">
+        <h2>Crear cuenta</h2>
+        <p>Regístrate para comenzar a usar StudyFlow</p>
+
+        <input type="text" placeholder="Nombre completo">
+        <input type="email" placeholder="Correo electrónico">
+        <input type="text" placeholder="Nombre de usuario">
+        <input type="password" placeholder="Contraseña">
+        <input type="password" placeholder="Confirmar contraseña">
+
+        <button onclick="window.location.href='login.html'">Registrar</button>
+
+        <p>¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a></p>
+    </div>
+
+</body>
+</html>
